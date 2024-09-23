@@ -7,35 +7,37 @@ using UnityEngine;
 
 namespace Code.Gameplay.Features.Hero.Factory
 {
-  public class HeroFactory : IHeroFactory
-  {
-    private readonly IIdentifierService _identifiers;
-
-    public HeroFactory(IIdentifierService identifiers)
+    public class HeroFactory : IHeroFactory
     {
-      _identifiers = identifiers;
-    }
+        private readonly IIdentifierService _identifiers;
 
-    public GameEntity CreateHero(Vector3 at)
-    {
-      Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
-        .With(x => x[Stats.Speed] = 2)
-        .With(x => x[Stats.MaxHp] = 100);
-      
-      return CreateEntity.Empty()
-        .AddId(_identifiers.Next())
-        .AddWorldPosition(at)
-        .AddBaseStats(baseStats)
-        .AddStatModifiers(InitStats.EmptyStatDictionary())
-        .AddDirection(Vector2.zero)
-        .AddSpeed(baseStats[Stats.Speed])
-        .AddCurrentHp(baseStats[Stats.MaxHp])
-        .AddMaxHp(baseStats[Stats.MaxHp])
-        .AddViewPath("Gameplay/Hero/hero")
-        .With(x => x.isHero = true)
-        .With(x => x.isTurnedAlongDirection = true)
-        .With(x => x.isMovementAvailable = true);
-    }
+        public HeroFactory(IIdentifierService identifiers)
+        {
+            _identifiers = identifiers;
+        }
 
-  }
+        public GameEntity CreateHero(Vector3 at)
+        {
+            Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
+              .With(x => x[Stats.Speed] = 2)
+              .With(x => x[Stats.MaxHp] = 100);
+
+            return CreateEntity.Empty()
+              .AddId(_identifiers.Next())
+              .AddWorldPosition(at)
+              .AddBaseStats(baseStats)
+              .AddStatModifiers(InitStats.EmptyStatDictionary())
+              .AddDirection(Vector2.zero)
+              .AddSpeed(baseStats[Stats.Speed])
+              .AddCurrentHp(baseStats[Stats.MaxHp])
+              .AddMaxHp(baseStats[Stats.MaxHp])
+              .AddViewPath("Gameplay/Hero/hero")
+              .AddExperience(0)
+              .AddPickupRadius(2f)
+              .With(x => x.isHero = true)
+              .With(x => x.isTurnedAlongDirection = true)
+              .With(x => x.isMovementAvailable = true); // 2, 00:00
+        }
+
+    }
 }

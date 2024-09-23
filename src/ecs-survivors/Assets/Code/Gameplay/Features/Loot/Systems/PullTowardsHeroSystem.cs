@@ -1,0 +1,41 @@
+﻿using Entitas;
+
+namespace Code.Gameplay.Features.Loot.Systems
+{
+    public class PullTowardsHeroSystem : IExecuteSystem
+    {
+        private readonly GameContext _game;
+        private readonly IGroup<GameEntity> _heroes;
+        private readonly IGroup<GameEntity> _pullables;
+
+        public PullTowardsHeroSystem(GameContext game)
+        {
+            _game = game;
+
+            _heroes = game.GetGroup(GameMatcher
+                .AllOf(
+                GameMatcher.Hero,
+                GameMatcher.WorldPosition));
+
+            _pullables = game.GetGroup(GameMatcher
+                .AllOf(
+                GameMatcher.Pulling,
+                GameMatcher.WorldPosition));
+        }
+
+        public void Execute()
+        {
+            foreach (var hero in _heroes)
+            {
+                foreach (var pullable in _pullables)
+                {
+                    var direction = (hero.WorldPosition - pullable.WorldPosition).normalized;
+                    pullable.ReplaceDirection(direction);
+                    pullable.ReplaceSpeed(4);
+                    pullable.isMoving = true;
+                    pullable.isMovementAvailable = true;
+                }
+            }
+        }
+    }
+}

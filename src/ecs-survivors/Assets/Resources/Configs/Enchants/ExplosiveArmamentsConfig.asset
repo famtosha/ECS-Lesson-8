@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190a1235383847b983940f0e90c9f82a, type: 3}
   m_Name: ExplosiveArmamentsConfig
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: cbfa5431ffdac7d49ae5bf38d894904b, type: 3}
   TypeId: 2
   EffectSetups:
   - EffectTypeId: 1

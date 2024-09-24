@@ -7,6 +7,7 @@ using Code.Gameplay.Common.Time;
 using Code.Gameplay.Features.Abilities.Factory;
 using Code.Gameplay.Features.Armaments.Factory;
 using Code.Gameplay.Features.Effects.Factory;
+using Code.Gameplay.Features.Enchants.UIFactories;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
 using Code.Gameplay.Features.Loot.Factory;
@@ -69,6 +70,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
             Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
             Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
+            Container.Bind<IEnchantUIFactory>().To<EnchantUIFactory>().AsSingle();
         }
 
         private void BindEntityIndices()

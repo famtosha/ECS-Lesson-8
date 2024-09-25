@@ -8,6 +8,15 @@ namespace Code.Gameplay.Features.LevelUp
         public LevelUpFeature(ISystemFactory systems)
         {
             Add(systems.Create<UpdateExperienceMeterSystem>());
+
+            Add(systems.Create<OpenLevelUpWindowSystem>());
+            Add(systems.Create<StopTimeOnLevelUpSystem>());
+
+            Add(systems.Create<UpgradeAbilityOnRequestSystem>());
+
+            Add(systems.Create<StartTimeOnLevelUpSystem>());
+
+            Add(systems.Create<FinalizeProcessedLevelUps>());
         }
     }
 }

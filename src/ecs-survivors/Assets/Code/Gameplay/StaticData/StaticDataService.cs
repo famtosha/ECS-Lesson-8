@@ -4,6 +4,7 @@ using System.Linq;
 using Code.Gameplay.Features.Abilities;
 using Code.Gameplay.Features.Abilities.Configs;
 using Code.Gameplay.Features.Enchants;
+using Code.Gameplay.Features.LevelUp;
 using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Loot.Configs;
 using Code.Gameplay.Windows;
@@ -18,6 +19,7 @@ namespace Code.Gameplay.StaticData
         private Dictionary<EnchantTypeId, EnchantConfig> _enchantById;
         private Dictionary<WindowId, GameObject> _windowPrefabsById;
         private Dictionary<LootTypeId, LootConfig> _lootById;
+        private LevelUpConfig _levelUpConfig;
 
         public void LoadAll()
         {
@@ -25,6 +27,22 @@ namespace Code.Gameplay.StaticData
             LoadEnchants();
             LoadLoot();
             LoadWindows();
+            LoadLevelUpConfigs();
+        }
+
+        public int MaxLevel()
+        {
+            return _levelUpConfig.maxlevel;
+        }
+
+        public float ExperienceForLevel(int level)
+        {
+            return _levelUpConfig.experienceForLevels[level];
+        }
+
+        private void LoadLevelUpConfigs()
+        {
+            _levelUpConfig = Resources.Load<LevelUpConfig>("Configs/LevelUpConfig");
         }
 
         private void LoadLoot()

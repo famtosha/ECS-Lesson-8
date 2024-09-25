@@ -1,16 +1,19 @@
-﻿using Entitas;
+﻿using Code.Gameplay.Features.LevelUp.Services;
+using Entitas;
 
 namespace Code.Gameplay.Features.LevelUp.Systems
 {
     public class UpdateExperienceMeterSystem : IExecuteSystem
     {
         private readonly GameContext _game;
+        private readonly ILevelUpService _levelUpService;
         private readonly IGroup<GameEntity> _meter;
         private readonly IGroup<GameEntity> _heroes;
 
-        public UpdateExperienceMeterSystem(GameContext game)
+        public UpdateExperienceMeterSystem(GameContext game, ILevelUpService levelUpService)
         {
             _game = game;
+            _levelUpService = levelUpService;
             _meter = game.GetGroup(GameMatcher
                 .AllOf(
                 GameMatcher.ExperienceMeter));
@@ -27,7 +30,7 @@ namespace Code.Gameplay.Features.LevelUp.Systems
             {
                 foreach (GameEntity hero in _heroes)
                 {
-                    meter.ExperienceMeter.SetExperience(hero.Experience, 100);
+                    meter.ExperienceMeter.SetExperience(hero.Experience, _levelUpService.ExperienceForLevelUp);
                 }
             }
         }

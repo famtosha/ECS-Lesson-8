@@ -34,7 +34,7 @@ namespace Code.Gameplay.Features.Enchants.Behaviours
             if (instance != null)
             {
                 _enchants.Remove(instance); 
-                Destroy(instance.gameObject); // 3, 00:00
+                Destroy(instance.gameObject);
             }
         }
     }

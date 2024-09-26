@@ -1,3 +1,4 @@
+using Code.Gameplay.Common.Random;
 using UnityEngine;
 
 namespace Code.Gameplay.Cameras.Provider
@@ -7,6 +8,8 @@ namespace Code.Gameplay.Cameras.Provider
     Camera MainCamera { get; }
     float WorldScreenHeight { get; }
     float WorldScreenWidth { get; }
-    void SetMainCamera(Camera camera);
+
+        Vector2 GetRandomPositionOnScreen(IRandomService random);
+        void SetMainCamera(Camera camera);
   }
 }

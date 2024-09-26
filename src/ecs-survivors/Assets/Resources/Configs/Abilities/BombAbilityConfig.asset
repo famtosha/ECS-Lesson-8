@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9833df43fb064a3199752651eaefcfde, type: 3}
+  m_Name: BombAbilityConfig
+  m_EditorClassIdentifier: 
+  AbilityId: 4
+  Levels:
+  - Icon: {fileID: -7557338073051819256, guid: 0a381178c3e859d48b321dc05e610c41, type: 3}
+    Description: BOMB!
+    Cooldown: 5
+    ViewPrefab: {fileID: 6295621220853740386, guid: 55dec322d485f0d478b495629f79957d, type: 3}
+    EffectSetups: []
+    StatusSetups:
+    - StatusTypeId: 1
+      Value: 1
+      Duration: 5
+      Period: 1
+    ProjectileSetup:
+      ProjectileCount: 0
+      Speed: 5
+      Pierce: 0
+      ContactRadius: 0
+      Lifetime: 0
+      OrbitRadius: 0
+    AuraSetup:
+      Radius: 0
+      Interval: 0

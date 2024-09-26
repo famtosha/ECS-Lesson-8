@@ -30,6 +30,18 @@ namespace Code.Gameplay.Features.Abilities.Factory
               .PutOnCooldown();
         }
 
+        public GameEntity CreateBombAbility(int level)
+        {
+            AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.Bomb, level);
+
+            return CreateEntity.Empty()
+              .AddId(_identifiers.Next())
+              .AddAbilityId(AbilityId.Bomb)
+              .AddCooldown(abilityLevel.Cooldown)
+              .With(x => x.isBombAbility = true)
+              .PutOnCooldown();
+        }
+
         public GameEntity CreateOrbitingMushroomAbility(int level)
         {
             AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
